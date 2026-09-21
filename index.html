@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NX Beauty</title>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+</head>
+<body>
+    <body id="top">
+    <!-- Navigations -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">contact</a>
+        <a href="product.html">Product</a>
+        <a href="checkout.html"><i class="fa-solid fa-cart-shopping"></i> Checkout</a>
+        <a href="confirmation.html"> confirmation</a>
+    </nav>
+    <!-- Banner Section -->
+    <section class="banner">
+        <img src="images/fenugreek.png" alt="Fenugreek product banner"> 
+         <h2>Welcome to NX Beauty</h2>
+    </section>
+    <!-- Heading + Tagline -->
+    <h1>NX Beauty</h1>
+    <p>Natural Care For Healthy, Strong and Beautiful Hair</p>
+    <!--CTA button-->
+    <a href="products.html" class="cta-btn">
+  <i class="fa-solid fa-shop"></i> Shop Now
+</a>
+
+<!-- About Section -->
+    <div class="about-text">
+        <p>Beauty begins with nature.</p>
+        <p>NX Beauty was created with one simple thought — why compromise when nature already has so much to offer?</p>
+        <p>Inspired by the timeless beauty rituals passed down through generations, we bring carefully selected herbal ingredients closer to your everyday self-care routine. From nourishing herbs to traditional beauty powders, every NX Beauty product is made with a focus on purity, simplicity and honest care.</p>
+        <p>We believe beauty doesn't have to be complicated. Sometimes, the best care comes from going back to the basics — pure ingredients, mindful choices and the goodness of nature.</p>
+        <p>At NX Beauty, our goal is not just to create products.</p>
+        <p>It's to make natural beauty a part of your everyday life.</p>
+        <p><strong>Simple. Naturally You.</strong></p>
+        <p><em>NX Beauty — Nature, Made for Your Beauty.</em></p>
+    </div>
+    <p>
+        We believe beauty comes from nature. That’s why every product is carefully crafted 
+        with pure ingredients, ensuring your hair and skin get the care they deserve.
+    </p>
+    </div>
+
+    <!--Featured Product Section-->
+    <section class="featured">
+        <h2>Featured Products</h2>
+        <div class="product-list">
+            <div class="product-item">
+                <img src="images/fenugreek.png" alt="Fenugreek Powder">
+                <h3>Fenugreek Powder</h3>
+                <p><strong>₹250</strong></p>
+                <button class="cart-btn" data-name="Fenugreek" data-price="200">Add to Cart</button>
+                <a href="product.html" class="cart-btn">View Products</a>
+                <img src="images/rose water.png" alt="Rose Water">
+                <h3>Rose Water</h3>
+                <p><strong>₹250</strong></p>
+                <button class="cart-btn" data-name="Rose Water" data-price="250">Add to Cart</button>
+                <a href="product.html" class="cart-btn">View Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- brand values icon -->
+     <div class="about-values">
+    <p>🌿 100% Natural Ingredients</p>
+    <p>💧 Pure & Safe Formulas</p>
+    <p>✨ Herbal Remedies Trusted for Generations</p>
+    </div>
+
+    <!-- Products Showcase -->
+    <section class="products">
+        <h2>Our Products</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="images/fenugreek.png" alt="Fenugreek product">
+                <h3>Fenugreek</h3>
+                <p>Natural Fenugreek Powder for a Healthy and Shiny  and Young Skin.</p>
+                <button class="cart-btn">Add to cart</button>
+            </div>
+            <div class="product">
+                <img src="images/rose water.png" alt="Rose Water product">
+                <h3>Rose Water</h3>
+            <p>Refreshing Rose Water for Skin and hair care.</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/shampoo.png" alt="Rose and bhrangraj shampoo product">
+            <h3>Rose and Bhrangraj Shampoo</h3>
+            <p>Rose and Bhrangraj Shampoo for Healthy Hair.</p>
+            <button class="cart-btn">Add to cart</button>
+        </div>
+    </section>
+
+  <script>
+  // Add to Cart from homepage
+  const cartButtons = document.querySelectorAll(".cart-btn");
+
+  cartButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const productName = btn.getAttribute("data-name");
+      const productPrice = parseInt(btn.getAttribute("data-price"));
+
+      // Get existing cart or create new
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name: productName, price: productPrice });
+
+      // Save back to localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert("✅ " + productName + " added to cart!");
+    });
+  });
+</script>  
+
+    <!-- Footer Section -->
+ <footer>
+  <p>© 2026 NX Beauty. All rights reserved.</p>
+  <p>
+    <a href="#"><i class="fab fa-instagram"></i> Instagram</a> 
+    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+  </p>
+<!--Back to top-->
+<a href="#top" class="back-to-top">
+    <i class="fa-solid fa-arrow-up"></i> Back to Top
+</a>    
+</footer>
+
+<!-- JavaScript -->
+<script>
+    // ✅ Placement: HTML ke end mein, footer ke upar
+    const buttons = document.querySelectorAll('.cart-btn');
+
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            alert('✅ Product added to cart!');
+        });
+    });
+</script>
+
+<script>
+  // Smooth scroll for Back to Top button
+  document.querySelector('.back-to-top').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+<script>
+  const backToTop = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.style.display = 'block';
+    } else {
+      backToTop.style.display = 'none';
+    }
+  });
+</script>
+
+<script>
+  const backToTopButton = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+
+  backToTopButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+
+</body>
+</html>
+
+<!-- Contact Section -->
+<section class="contact-info">
+  <h2>Get in Touch</h2>
+  <p><i class="fa-solid fa-phone"></i> +91-9289089678</p>
+  <p><i class="fa-solid fa-envelope"></i> info@nxbeauty.com</p>
+</section>
+
+<script>
+  function showMessage(event) {
+    event.preventDefault();
+    document.getElementById('thankyou').style.display = 'block';
+  }
+</script>
