@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NX Beauty</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="product.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="checkout.html">checkout</a>
+    <a href="confirmation.html">cofirmation</a>
+  </nav>
+
+  <main class="products">
+    <h2>Our Products</h2>
+    <div class="product-list">
+      <div class="product-item">
+        <img src="images/fenugreek.png" alt="Fenugreek Product">
+        <h3>Fenugreek powder</h3>
+        <p>Natural fenugreek powder for healthy, shiny, younger-looking skin.</p>
+        <p><strong>₹250</strong></p>
+        <button class="cart-btn" type="button">Add to Cart</button>
+      </div>
+
+      <div class="product-item">
+        <img src="images/rose water.png" alt="Rose Water Product">
+        <h3>Rose water</h3>
+        <p>Refreshing rose water for skin and hair care.</p>
+        <p><strong>₹150</strong></p>
+        <button class="cart-btn" type="button">Add to Cart</button>
+      </div>
+
+      <div class="product-item">
+        <img src="images/shampoo.png" alt="Rose and Bhringraj Hair Oil">
+        <h3>Rose and Bhringraj Hair Oil</h3>
+        <p>Herbal hair oil for strong and shiny hair.</p>
+        <p><strong>₹500</strong></p>
+        <button class="cart-btn" type="button">Add to Cart</button>
+      </div>
+
+      <div class="product-item">
+        <img src="images/Lipbalm.png" alt="Organic Lip Balm">
+        <h3>Organic Lip Balm</h3>
+        <p>Natural lip balm for soft and moisturized lips.</p>
+        <p><strong>₹120</strong></p>
+        <button class="cart-btn" type="button">Add to Cart</button>
+      </div>
+
+      <div class="product-item">
+        <img src="images/aloevera gel.png" alt="Aloe Vera Gel">
+        <h3>Aloe Vera Gel</h3>
+        <p>Natural aloe vera gel for soothing and hydrating skin.</p>
+        <p><strong>₹300</strong></p>
+        <button class="cart-btn" type="button">Add to Cart</button>
+      </div>
+
+      <div class="product-item">
+        <img src="images/Face Cream.png" alt="Face Cream">
+        <h3>Face Cream</h3>
+        <p>Natural herbal face cream for brighter-looking skin.</p>
+        <p><strong>₹400</strong></p>
+        <button class="cart-btn" type="button">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 NX Beauty. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".cart-btn");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const productItem = button.closest(".product-item");
+        const name = productItem.querySelector("h3").textContent.trim();
+        const priceText = productItem.querySelector("strong").textContent;
+        const price = Number(priceText.replace(/[^0-9]/g, ""));
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        cart.push({ name, price });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${name} added to cart!`);
+      });
+    });
+  </script>
+</body>
+</html>

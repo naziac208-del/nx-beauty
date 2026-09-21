@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - NX Beauty</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="checkout-container">
+    <!-- 🛍️ Order Summary Section -->
+    <section class="order-summary">
+      <h2>Order Summary</h2>
+      <ul class="summary-list"></ul>
+      <p id="order-total"></p>
+      <button class="place-order-btn">Place Order</button>
+    </section>
+
+    <!-- 💰 Right Side Total Section -->
+    <section class="order-total">
+      <h3>Order Total</h3>
+      <div id="summary-items"></div>
+      <p>Total</p>
+      <p class="summary-total-items"><span></span></p>
+      <p class="summary-total-price"><span></span></p>
+    </section>
+  </main>
+
+<footer>
+    <p>&copy; 2026 NX Beauty. All rights reserved.</p>
+</footer>
+
+
+  <!-- 🧠 JavaScript -->
+  <script>
+    // Step 1: Load cart data from localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Step 2: Assign price if missing
+    cart.forEach(item => {
+      const productPrices = {
+        "Fenugreek powder": 250,
+        "Rose water": 150,
+        "Rose & Bhringraj Hair Oil": 500,
+        "Rose & Bhringraj Shampoo": 500,
+        "Organic Lip Balm": 120,
+        "Aloe Vera Gel": 300,
+        "Face Cream": 400
+      };
+      item.price = productPrices[item.name] || 0;
+    });
+
+    // Step 3: Display order summary
+    const summaryList = document.querySelector(".summary-list");
+    const totalElement = document.querySelector("#order-total");
+
+    let total = 0;
+    summaryList.innerHTML = "";
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} - ₹${item.price}`;
+      summaryList.appendChild(li);
+      total += item.price;
+    });
+
+    totalElement.textContent = `Total: ₹${total}`;
+  </script>
+
+  <script>
+  const placeOrderBtn = document.querySelector(".place-order-btn");
+  if (placeOrderBtn) {
+    placeOrderBtn.addEventListener("click", () => {
+      window.location.href = "confirmation.html";
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - NX Beauty</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="cart-container">
+    <h2>Your Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+    <p id="cart-total"></p>
+    <button id="checkout-btn">Proceed to Checkout</button>
+  </main>
+
+  <script>
+    // Step 1: Load cart data from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Step 2: Assign prices to products
+    const productPrices = {
+      "Fenugreek powder": 250,
+      "Rose water": 150,
+      "Rose & Bhringraj Hair Oil": 500,
+      "Rose & Bhringraj Shampoo": 500,
+      "Organic Lip Balm": 120,
+      "Aloe Vera Gel": 300,
+      "Face Cream": 400
+    };
+
+    // Step 3: Display cart items
+    const cartList = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    let total = 0;
+    cartList.innerHTML = "";
+
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      const price = productPrices[item.name] || 0;
+      li.textContent = `${item.name} - ₹${price}`;
+      cartList.appendChild(li);
+      total += price;
+      item.price = price; // store price for checkout page
+    });
+
+    cartTotal.textContent = `Total: ₹${total}`;
+
+    // Step 4: Save updated cart with prices
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Step 5: Checkout button click
+    document.getElementById("checkout-btn").addEventListener("click", () => {
+      window.location.href = "checkout.html";
+    });
+  </script>
+</body>
+</html>

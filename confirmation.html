@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <metan name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order Confirmation - NX Beauty</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+<nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="product.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="checkout.html">Checkout</a>
+            <a href="contact.html">Contacts</a>
+            <a href="confirmation.html">confirmation</a>
+</nav>
+     <div id="order-summary"></div>
+
+<section class="confirmation">
+            <h2> Thank you for your order!</h2>
+            <p>Your Purchase hasd been successfully placed. We truly appreciate your trust in NX Beauty.</p>
+            <p>You'll receive an email confirmation shortly with your order details.</p>
+            <a href="index.html" class="btn">Back to Home</a>
+</section>
+</body>
+    <p class="tagline">Glow naturally, feel beautiful — NX Beauty.</p>
+
+<footer>
+  <p>&copy; 2026 NX Beauty. All rights reserved.</p>
+</footer>
+
+<!-- ✅ JavaScript block yahan likho -->
+<script>
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const summaryContainer = document.getElementById("order-summary");
+  let total = 0;
+
+  if (cart.length > 0) {
+    const list = document.createElement("ul");
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} - ₹${item.price}`;
+      list.appendChild(li);
+      total += item.price;
+    });
+    summaryContainer.appendChild(list);
+
+    const totalLine = document.createElement("p");
+    totalLine.textContent = `Total: ₹${total}`;
+    summaryContainer.appendChild(totalLine);
+ }
+  localStorage.removeItem("cart");
+</script>
+    
+    
